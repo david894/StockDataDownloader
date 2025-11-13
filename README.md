@@ -1,69 +1,122 @@
-## Bursa Malaysia Stock Data Downloader 
+# 🇲🇾 Bursa Malaysia Stock Data Downloader
 
-📈 Project Overview
+📈 **Automate Bursa Malaysia (KLSE) stock data collection with ease**
 
-This Python script is designed to automate the process of downloading historical stock price data for companies listed on Bursa Malaysia (Kuala Lumpur Stock Exchange) using the yfinance library.
+---
 
-It is specifically configured to:
+## 🧭 Overview
 
-1. Read a list of 4-digit stock codes from a local file (stock_codes.txt).
+This **Python script** automates the process of downloading **historical stock price data** for companies listed on **Bursa Malaysia (Kuala Lumpur Stock Exchange)** using the [`yfinance`](https://pypi.org/project/yfinance/) library.
 
-Format these codes for Yahoo Finance compatibility (by adding the .KL suffix).
+It is designed to:
 
-Download only the Adjusted Close and Close prices to ensure cleaner data for analysis.
+* ✅ Read a list of **4-digit stock codes** from a local file (`stock_codes.txt`)
+* 🔧 Format these codes for Yahoo Finance (by appending `.KL`)
+* 💾 Download **Adjusted Close** and **Close** prices only
+* 📊 Export all results into a **single clean CSV file** for analysis
 
-Export the consolidated data into a single CSV file.
+---
 
+## 🚀 Getting Started
 
+### 🧩 Prerequisites
 
-🚀 Getting Started
+Make sure you have **Python 3.8+** installed, then install the dependencies:
 
-Prerequisites
-
-You need Python installed. Then, install the required libraries:
-
+```bash
 pip install yfinance pandas
+```
 
+---
 
-1. Prepare Your Ticker File
+### 📄 Step 1: Prepare Your Stock Code List
 
-Create a plain text file named stock_codes.txt in the same directory as the script. This file should contain one 4-digit stock code per line, followed by a newline (Enter).
+Create a text file named **`stock_codes.txt`** in the same directory as your script.
+Each line should contain one **4-digit stock code** (without `.KL`).
 
-Example of stock_codes.txt:
+**Example:**
 
+```
 7231
 0271
 5246
 0008
-... (all your codes)
+```
 
+---
 
-2. Run the Script
+### 🏃 Step 2: Run the Script
 
-Execute the main Python script:
+Run the Python script in your terminal or IDE:
 
+```bash
 python bursa_data_pipeline.py
+```
 
+---
 
+## 📂 Output
 
-📂 Output
+When complete, the script generates a file named:
 
-Upon successful execution, the script will generate a file named bursa_closing_prices_filtered.csv in the same directory.
+```
+bursa_closing_prices_filtered.csv
+```
 
-The CSV file will contain the daily historical data, with headers structured to show the metric (Adj Close or Close) and the stock ticker (e.g., Adj Close, 7231.KL).
+This file contains daily historical data, with headers formatted as:
 
-⚙️ Configuration
+| Date | Adj Close,7231.KL | Close,7231.KL | Adj Close,0271.KL | Close,0271.KL | ... |
+| ---- | ----------------- | ------------- | ----------------- | ------------- | --- |
 
-You can easily adjust the date range and output file name within the if __name__ == "__main__": block of the bursa_data_pipeline.py file:
+---
 
+## ⚙️ Configuration
+
+You can easily modify the **date range** and **output settings** in the main script:
+
+```python
 if __name__ == "__main__":
-    # ...
-    # Define the desired date range (currently set to the last 180 days)
+    # Define date range (default: last 180 days)
     TODAY = datetime.now().strftime('%Y-%m-%d')
     START_DATE = (datetime.now() - pd.DateOffset(days=180)).strftime('%Y-%m-%d')
-    
+
+    # Output file name
     OUTPUT_FILE = 'bursa_closing_prices_filtered.csv'
 
-    # The file the script reads from
+    # Input ticker file
     TICKER_FILE_NAME = 'stock_codes.txt'
-    # ...
+```
+
+---
+
+## 💡 Example Use Case
+
+This script is useful for:
+
+* 🧠 Academic or personal **financial analysis**
+* 📊 Backtesting trading strategies
+* 💼 Data collection for **machine learning models**
+
+---
+
+## 🛠️ Tech Stack
+
+* **Python**
+* **yfinance**
+* **pandas**
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!
+If you'd like to improve the script, please open an issue or submit a PR.
+
+---
+
+## 🪪 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
