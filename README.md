@@ -6,13 +6,15 @@ This Python script is designed to automate the process of downloading historical
 
 It is specifically configured to:
 
-Read a list of 4-digit stock codes from a local file (stock_codes.txt).
+1. Read a list of 4-digit stock codes from a local file (stock_codes.txt).
 
 Format these codes for Yahoo Finance compatibility (by adding the .KL suffix).
 
 Download only the Adjusted Close and Close prices to ensure cleaner data for analysis.
 
 Export the consolidated data into a single CSV file.
+
+
 
 🚀 Getting Started
 
@@ -41,6 +43,7 @@ Example of stock_codes.txt:
 Execute the main Python script:
 
 python bursa_data_pipeline.py
+
 
 
 📂 Output
